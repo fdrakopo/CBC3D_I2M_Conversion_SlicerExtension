@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<executable>
+  <category>MeshGeneration</category>
+  <title>BodyCentricCubicMesh</title>
+  <description><![CDATA[Generates a Body Centric Cubic (BCC) mesh from a labeled image. Initially the generated mesh is homogeneous, that means does not distinguish different tissues. Later the module specifies which tissue each tetrahedron belongs to. Each tissue is capable of automatically adjusting its resolution based on its geometric complexity and the predefined subdivision criterion. The current version of the module supports a single-tissue input labeled image. A comprehensive description of the method can be found at : 1.Tetrahedral mesh generation for medical imaging Fedorov A., Chrisochoides N., Kikinis R., Warfield S. College of William and Mary; Computational Radiology Lab and Surgical Planning Lab, Brigham and Women's Hospital, Harvard Medical School, and 2. Mesh Deformation-based Multi-tissue Mesh Generation for Brain Images, Yixun Liu, Panagiotis Foteinos, Andrey Chernikov and Nikos Chrisochoides, Engineering with Computers, Volume 28, pages 305-318, 2012.]]></description>
+  <version>0.0.1</version>
+  <documentation-url>http://www.example.com/Slicer/Modules/BodyCentricCubicMesh</documentation-url>
+  <license>Slicer</license>
+  <contributor>Fotis Drakopoulos (CRTC), Yixun Liu (CRTC), Andrey Fedorov (SPL B&amp;W Harvard), Nikos Chrisochoides (CRTC)</contributor>
+  <acknowledgements>This work was partially supported by NIH R44 OD018334-03A, grant CCF-1139864 and by the Richard T.Cheng Endowment.</acknowledgements>
+  <parameters>
+    <label>Mesh Generation Parameters</label>
+    <description><![CDATA[Parameters used for the mesh generation]]></description>
+    <double>
+      <name>MeshSize</name>
+      <longflag>size</longflag>
+      <description><![CDATA[Controls the size of the mesh. The smaller the value the larger the mesh. Value should be between [1,20].]]></description>
+      <label>Size</label>
+      <default>8.0</default>
+      <constraints>
+        <minimum>1.0</minimum>
+        <maximum>20.0</maximum>
+        <step>1.0</step>
+      </constraints>
+    </double>
+    <double>
+      <name>Fidelity</name>
+      <longflag>fidelity</longflag>
+      <description><![CDATA[Controls the subdivision of the elements that belong to more than one image labels. The larger the value the better the conformity of the mesh on the image label interfaces. Value should be between [0.1,1].]]></description>
+      <label>Fidelity</label>
+      <default>0.8</default>
+      <constraints>
+        <minimum>0.1</minimum>
+        <maximum>1.0</maximum>
+        <step>0.1</step>
+      </constraints>
+    </double>
+    <integer>
+      <name>ResampleResolution</name>
+      <longflag>resampleResolution</longflag>
+      <description><![CDATA[Controls the image resampling. Suggested value is 0 (no-resampling) for large tissues and 1 or 2 for smaller tissues. Value should be 0 or 1 or 2.]]></description>
+      <label>Resample Resolution</label>
+      <default>0</default>
+      <constraints>
+        <minimum>0</minimum>
+        <maximum>2</maximum>
+        <step>1</step>
+      </constraints>
+    </integer>
+  </parameters>
+  <parameters>
+    <label>IO</label>
+    <description><![CDATA[Input/output parameters]]></description>
+    <image>
+      <name>LabeledImageFileName</name>
+	  <longflag>inputLabeledImage</longflag>
+      <label>Input Labeled Image</label>
+      <channel>input</channel>
+      <description><![CDATA[The input labeled image.]]></description>
+    </image>
+  	<string>
+      <name>OutputMeshFileName</name>
+      <longflag>outputMesh</longflag>
+      <description><![CDATA[The output tetrahedral mesh in vtk file format.]]></description>
+      <label>Output Mesh File</label>
+      <default>outputMesh.vtk</default>
+    </string>
+  </parameters>
+</executable>
+
+
+
+
+
+
+
+
+

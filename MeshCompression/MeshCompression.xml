@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<executable>
+  <category>MeshGeneration</category>
+  <title>MeshCompression</title>
+  <description><![CDATA[Deforms the input tetrahedral mesh towards the boundaries of the input labeled image. Two point sets are extracted for the mesh deformation. The first (source point set) consists of the surface vertices in the input mesh. The second (target point set) consists of the surface edge points in the input labeled image. After the extraction of the two point sets, the input mesh is deformed by registering the source to the target point set using a physics-based non-rigid registration method. The current version of the module supports a single-tissue input labeled image and mesh. A comprehensive description of the method can be found in article : Mesh deformation-based multi-tissue mesh generation for brain images, Engineering with Computers (2012), Volume 28, Issue 4, pp 305-318.]]></description>
+  <version>0.0.1</version>
+  <documentation-url>http://www.example.com/Slicer/Modules/MeshCompression</documentation-url>
+  <license>Slicer</license>
+  <contributor>Fotis Drakopoulos (CRTC), Yixun Liu (CRTC), Andrey Fedorov (SPL B&amp;W Harvard), Nikos Chrisochoides (CRTC)</contributor>
+  <acknowledgements>This work was partially supported by NIH R44 OD018334-03A, grant CCF-1139864 and by the Richard T.Cheng Endowment.</acknowledgements>
+    <parameters>
+    <label>Mesh Compression Parameters</label>
+    <description><![CDATA[Parameters used for the mesh Compression]]></description>
+    <double>
+      <name>Flexibility</name>
+      <longflag>flexibility</longflag>
+      <description><![CDATA[Controls the trade-off between the regularization energy defined by the stress energy of a linear biomechanical elastic model, and the similarity energy. Value should be between [0.1,1].]]></description>
+      <label>Flexibility</label>
+      <default>1.0</default>
+      <constraints>
+        <minimum>0.1</minimum>
+        <maximum>1.0</maximum>
+        <step>0.1</step>
+      </constraints>
+    </double>
+    <integer>
+      <name>NumOfIterations</name>
+      <longflag>numIterations</longflag>
+      <description><![CDATA[Controls the number of iterations for the compressor. The larger the value the closer the boundaries of the input mesh to the boundaries of the input image. A large number of iterations might cause distorted poor-quality elements. Value should be between [1,10].]]></description>
+      <label>Number of Iterations</label>
+      <default>3</default>
+      <constraints>
+        <minimum>1</minimum>
+        <maximum>10</maximum>
+        <step>1</step>
+      </constraints>
+    </integer>
+	<integer>
+	  <name>NonConnectivity</name>
+	  <longflag>nonConnectivity</longflag>
+	  <description><![CDATA[Controls the density of the extracted target points via a prohibited connectivity between adjacent blocks of voxels. The larger the value the denser the target point set. 0 is vertex non-connectivity (26 neighbors), 1 is edge non-connectivity (18 neighbors), 2 is face non-connectivity (6 neighbors) and 3 is no non-connectivity. Value should be 0 or 1 or 2 or 3.]]></description>
+	  <label>Non Connectivity</label>
+	  <default>0</default>
+	  <constraints>
+		<minimum>0</minimum>
+		<maximum>3</maximum>
+		<step>1</step>
+	  </constraints>
+	</integer>
+  </parameters>
+  <parameters>
+    <label>IO</label>
+    <description><![CDATA[Input/output parameters]]></description>
+      <image>
+      <name>InputLabeledImageFileName</name>
+      <longflag>inputLabeledImage</longflag>
+      <label>Input Labeled Image</label>
+      <channel>input</channel>
+      <description><![CDATA[Input labeled image.]]></description>
+    </image>
+	<file>
+	  <name>InputMeshFileName</name>
+	  <longflag>inputMesh</longflag>
+	  <channel>input</channel>
+	  <description><![CDATA[Input tetrahedral mesh in vtk file format.]]></description>
+	  <label>Input Mesh File</label>
+	</file>
+    <string>
+      <name>OutputMeshFileName</name>
+      <longflag>outputMesh</longflag>
+      <description><![CDATA[Output deformed mesh in vtk file format (optional).]]></description>
+      <label>Output Mesh File</label>
+      <default>deformedMesh.vtk</default>
+    </string>
+	<string>
+	  <name>OutputSourcePointsFileName</name>
+	  <longflag>outputSourcePoints</longflag>
+	  <description><![CDATA[Extracted source points in vtk file format (optional). The source points consist of the surface vertices and the interface vertices (vertices that belong to more than one image label) in the input mesh.]]></description>
+	  <label>Output Source Points File</label>
+	</string>
+	<string>
+	  <name>OutputTargetPointsFileName</name>
+	  <longflag>outputTargetPoints</longflag>
+	  <description><![CDATA[Extracted target points in vtk file format (optional). The target points consist of the surface edge points and the interface edge points in the input labeled image.]]></description>
+	  <label>Output Target Points File</label>
+	</string>
+	<string>
+	  <name>OutputSurfaceTrianglesFileName</name>
+	  <longflag>outputSurfaceTriangles</longflag>
+	  <description><![CDATA[Extracted surface triangles of the input mesh in vtk file format (optional).]]></description>
+	  <label>Output Surface Triangles File</label>
+	</string>
+  </parameters>
+</executable>
