@@ -73,9 +73,9 @@ void CompressorSolver<TPixel,VDimension>
 	if(this->GetLambda() <= 0 || this->GetLambda() > 1.0)
 		itkExceptionMacro("Invalid value for Lamdba : " << this->GetLambda() << " .Should be between (0,1].");
 
-	std::cout << "Scale Factor For Edges : " << this->m_ScaleFactorForEdges << std::endl;
-	std::cout << "Scale Factor For Volumes : " << this->m_ScaleFactorForVolumes << std::endl;
-	std::cout << "Scale Factor For Search Radious : " << this->m_ScaleFactorForSearchRadius << std::endl;
+	//std::cout << "Scale Factor For Edges : " << this->m_ScaleFactorForEdges << std::endl;
+	//std::cout << "Scale Factor For Volumes : " << this->m_ScaleFactorForVolumes << std::endl;
+	//std::cout << "Scale Factor For Search Radious : " << this->m_ScaleFactorForSearchRadius << std::endl;
 
 	// Initialize matrix, vector, solution
 	this->Initialization();
@@ -108,7 +108,7 @@ void CompressorSolver<TPixel,VDimension>
 		this->UpdateLandmarks();
 		this->AssembleF();
 		// this->PrintForces("forces.txt");
-		std::cout << "Solving System..." << std::endl;
+		//std::cout << "Solving System..." << std::endl;
 		this->GetLinearSystemWrapper()->Solve();
 		// this->PrintSolution("solution.txt");
 		this->UpdateFEMObjectCoordinates();
@@ -332,7 +332,7 @@ template <class TPixel,unsigned int VDimension>
 void CompressorSolver<TPixel, VDimension>
 ::UpdateFEMObjectCoordinates()
  {
-	std::cout << "Updating FEMObject Node Coordinates..." << std::endl;
+	//std::cout << "Updating FEMObject Node Coordinates..." << std::endl;
 
 	int numNodes = this->m_FEMObject->GetNumberOfNodes();
 	typedef Element::Node NodeType;
@@ -352,7 +352,7 @@ template <class TPixel,unsigned int VDimension>
 void CompressorSolver<TPixel, VDimension>
 ::RestorePreviousFEMObjectCoordinates()
  {
-	std::cout << "Restoring Previous FEMObject Coordinates..." << std::endl;
+	//std::cout << "Restoring Previous FEMObject Coordinates..." << std::endl;
 
 	int numNodes = this->m_FEMObject->GetNumberOfNodes();
 	typedef Element::Node NodeType;
@@ -373,7 +373,7 @@ template <class TPixel,unsigned int VDimension>
 void CompressorSolver<TPixel, VDimension>
 ::NormalizeNormals()
  {
-	std::cout << "Normalizing Normals..." << std::endl;
+	//std::cout << "Normalizing Normals..." << std::endl;
 	if(!this->m_SurfaceVertexToNormalMapContainer)
 		itkExceptionMacro("Surface Triangles Container is NULL!");
 
@@ -418,7 +418,7 @@ template <class TPixel,unsigned int VDimension>
 void CompressorSolver<TPixel,VDimension>
 ::ComputeNormals()
  {
-	std::cout << "Computing Normals..." << std::endl;
+	//std::cout << "Computing Normals..." << std::endl;
 	if(!this->m_SurfaceVertexToNormalMapContainer)
 		this->m_SurfaceVertexToNormalMapContainer = SurfaceVertexToNormalMapContainerType::New();
 
@@ -469,7 +469,7 @@ template <class TPixel,unsigned int VDimension>
 void CompressorSolver<TPixel,VDimension>
 ::UpdateLandmarks()
  {
-	std::cout << "Updating Landmarks..." << std::endl;
+	//std::cout << "Updating Landmarks..." << std::endl;
 
 	if(!this->m_FEMObject->GetLoadContainer())
 		itkExceptionMacro("Missing load container!");
@@ -506,7 +506,7 @@ template <class TPixel,unsigned int VDimension>
 void CompressorSolver<TPixel,VDimension>
 ::ComputeCorrespondence()
  {
-	std::cout << "Computing Correspondences..." << std::endl;
+	//std::cout << "Computing Correspondences..." << std::endl;
 
 	if(!this->m_SurfaceVertexToCorrespondenceMapContainer)
 		this->m_SurfaceVertexToCorrespondenceMapContainer = SurfaceVertexToCorrespondenceMapContainerType::New();
@@ -829,7 +829,7 @@ template <class TPixel,unsigned int VDimension>
 void CompressorSolver<TPixel,VDimension>
 ::AssembleF()
  {
-	std::cout << "Assembling Forces..." << std::endl;
+	//std::cout << "Assembling Forces..." << std::endl;
 	const double pointTensorPonderation = GetLandmarkTensorPonderation();
 
 	this->GetLinearSystemWrapper()->InitializeVector(m_ForceIndex);
@@ -879,7 +879,7 @@ template <class TPixel,unsigned int VDimension>
 void CompressorSolver<TPixel,VDimension>
 ::AssembleGlobalMatrixFromLandmarksAndMeshMatrices()
  {
-	std::cout << "Assembling Global Matrix From Landmarks And Mesh Matrices..." << std::endl;
+	//std::cout << "Assembling Global Matrix From Landmarks And Mesh Matrices..." << std::endl;
 	this->m_ls->CopyMatrix( this->m_MeshStiffnessMatrixIndex, this->m_StiffnessMatrixIndex );
 	this->m_ls->AddMatrixMatrix( this->m_StiffnessMatrixIndex, this->m_LandmarkStiffnessMatrixIndex);
 }
@@ -914,7 +914,7 @@ template <class TPixel,unsigned int VDimension>
 void CompressorSolver<TPixel,VDimension>
 ::AssembleLandmarkStiffnessMatrix()
  {
-	std::cout << "Assembling Landmarks Stiffness Matrix..." << std::endl;
+	//std::cout << "Assembling Landmarks Stiffness Matrix..." << std::endl;
 
 	// Assemble the contribution matrix of the landmarks
 	const double pointTensorPonderation = this->GetLandmarkTensorPonderation();
@@ -993,7 +993,7 @@ template <class TPixel,unsigned int VDimension>
 void CompressorSolver<TPixel,VDimension>
 ::ComputeLandmarksTensor()
  {
-	std::cout << "Computing Landmarks Tensor..." << std::endl;
+	//std::cout << "Computing Landmarks Tensor..." << std::endl;
 
 	// Compute mesh Surface Vertices tensor weighted by a structure tensor if exists
 	LoadContainerType *container = this->m_FEMObject->GetLoadContainer();
@@ -1054,7 +1054,7 @@ template <class TPixel,unsigned int VDimension>
 void CompressorSolver<TPixel,VDimension>
 ::AssembleMeshStiffnessMatrix()
 {
-	std::cout << "Assembling Mesh Stiffness Matrix..." << std::endl;
+	//std::cout << "Assembling Mesh Stiffness Matrix..." << std::endl;
  // Assemble the mechanical stiffness matrix from the mesh
 
   // if no DOFs exist in a system, we have nothing to do

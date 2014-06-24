@@ -123,8 +123,8 @@ template<class TInputMesh, class TInputImage, class TOutputMesh>
 void FEMCompressor<TInputMesh, TInputImage, TOutputMesh>
 ::ExtractTargetPoints()
  {
-	std::cout << "" << std::endl;
-	std::cout << "Extracting  target Points..." << std::endl;
+	//std::cout << "" << std::endl;
+	//std::cout << "Extracting  target Points..." << std::endl;
 
 	ImageType* pInputImage = this->GetImage();
 	if(!pInputImage)
@@ -177,13 +177,13 @@ void FEMCompressor<TInputMesh, TInputImage, TOutputMesh>
 	for(it = labelMap.begin(); it != labelMap.end(); it++)
 	{
 		numVoxels += it->second;
-		std::cout << "Label " << it->first << " has " << it->second << " voxels" << std::endl;
+		//std::cout << "Label " << it->first << " has " << it->second << " voxels" << std::endl;
 	}
 	if(numVoxels != pInputImage->GetLargestPossibleRegion().GetSize()[0]*
 			pInputImage->GetLargestPossibleRegion().GetSize()[1]*
 			pInputImage->GetLargestPossibleRegion().GetSize()[2])
 		itkExceptionMacro("Invalid number of total image voxels!");
-	std::cout << "Number of input voxels : " << numVoxels << std::endl;
+	//std::cout << "Number of input points: " << numVoxels << std::endl;
 
 	if(labelMap.size() != 2)
         itkExceptionMacro("Invalid input image! " << labelMap.size() << " labels detected (including the background). "
@@ -331,19 +331,19 @@ void FEMCompressor<TInputMesh, TInputImage, TOutputMesh>
 		itkExceptionMacro("No target points were extracted from the labeled image!");
 
 	// Prints
-	std::cout << "" << std::endl;
-	for(label2MapIter = label2Map.begin(); label2MapIter != label2Map.end(); label2MapIter++)
-	{
-		typename PixelTypeSet::iterator itt;
-		PixelTypeSet labelSet = label2MapIter->first;
-		std::cout << "label set:";
-		for(itt = labelSet.begin(); itt != labelSet.end(); ++itt)
-			std::cout << " " << *itt;
-		std::cout << std::endl;
-		std::cout << " has " << label2MapIter->second->size() << " voxels " << std::endl;
-	}
+	//std::cout << "" << std::endl;
+	//for(label2MapIter = label2Map.begin(); label2MapIter != label2Map.end(); label2MapIter++)
+	//{
+	//	typename PixelTypeSet::iterator itt;
+	//	PixelTypeSet labelSet = label2MapIter->first;
+	//	std::cout << "label set:";
+	//	for(itt = labelSet.begin(); itt != labelSet.end(); ++itt)
+	//		std::cout << " " << *itt;
+	//	std::cout << std::endl;
+	//	std::cout << " has " << label2MapIter->second->size() << " voxels " << std::endl;
+	//}
 
-	std::cout << "Number of target Points : " << numTargetVoxels << std::endl;
+	std::cout << "Number of target Points: " << numTargetVoxels << std::endl;
 
 	// Prints
 	if(!this->GetOutputTargetPointsFileName().empty())
@@ -605,10 +605,11 @@ void FEMCompressor<TInputMesh, TInputImage, TOutputMesh>
 		cellDataIt++;
 	}
 
-	std::cout << "Num of Surface Triangles : " << this->m_SurfaceTrianglesContainer->Size() << std::endl;
-	std::cout << "Num of Surface Triangles : " << numExtSurfTriangles << std::endl;
-	std::cout << "Num of Surface Vertices : " << this->m_SurfaceVertexToLabelMapContainer->Size() << std::endl;
-	std::cout << "Num of Source Points " << this->m_SurfaceVertexToLabelMapContainer->Size() << std::endl;
+    std::cout << "" << std::endl;
+	//std::cout << "Num of Surface Triangles : " << this->m_SurfaceTrianglesContainer->Size() << std::endl;
+	//std::cout << "Num of Surface Triangles : " << numExtSurfTriangles << std::endl;
+	//std::cout << "Num of Surface Vertices : " << this->m_SurfaceVertexToLabelMapContainer->Size() << std::endl;
+	std::cout << "Num of Source Points: " << this->m_SurfaceVertexToLabelMapContainer->Size() << std::endl;
 
 	// Prints
 	if(!this->GetOutputSourcePointsFileName().empty())
@@ -706,7 +707,7 @@ template<class TInputMesh, class TInputImage, class TOutputMesh>
 void FEMCompressor<TInputMesh, TInputImage, TOutputMesh>
 ::BuildSourcePointsConnectivity()
  {
-	std::cout << "Building Surface Vertices Connectivity..." << std::endl;
+	//std::cout << "Building Surface Vertices Connectivity..." << std::endl;
 
 	this->m_SurfaceVertexToNeighborVerticesMapContainer = SurfaceVertexToNeighborVerticesMapContainerType::New();
 	SurfaceVertexToNeighborVerticesMapContainerType::iterator mapIter;
@@ -746,7 +747,7 @@ void FEMCompressor<TInputMesh, TInputImage, TOutputMesh>
 			pNeighborVerticesSet->insert(idOther2);
 		}
 	}
-	std::cout << "Size 0f m_Vertex2NeighborVerticesMap : " << m_SurfaceVertexToNeighborVerticesMapContainer->Size() << std::endl;
+	//std::cout << "Size 0f m_Vertex2NeighborVerticesMap : " << m_SurfaceVertexToNeighborVerticesMapContainer->Size() << std::endl;
  }
 
 template<class TInputMesh, class TInputImage, class TOutputMesh>
@@ -1039,7 +1040,7 @@ void FEMCompressor<TInputMesh, TInputImage, TOutputMesh>
 	if( this->GetFEMObject()->GetNumberOfNodes() != this->GetInput()->GetPoints()->Size())
 		itkExceptionMacro("FEMObject generated invalid number of Nodes! ");
 
-	std::cout << "Num Nodes at FEMObject : " << this->GetFEMObject()->GetNumberOfNodes() << std::endl;
+	//std::cout << "Num Nodes at FEMObject : " << this->GetFEMObject()->GetNumberOfNodes() << std::endl;
  }
 
 
@@ -1120,7 +1121,7 @@ void FEMCompressor<TInputMesh, TInputImage, TOutputMesh>
 	if( this->GetFEMObject()->GetNumberOfElements() != pMesh->GetCells()->Size())
 		itkExceptionMacro("FEMObject generated invalid number of Tets! ");
 
-	std::cout << "Num Tets at FEMObject : " << this->GetFEMObject()->GetNumberOfElements() << std::endl;
+	//std::cout << "Num Tets at FEMObject : " << this->GetFEMObject()->GetNumberOfElements() << std::endl;
 }
 
 template<class TInputMesh, class TInputImage, class TOutputMesh>
@@ -1183,14 +1184,8 @@ void FEMCompressor<TInputMesh, TInputImage, TOutputMesh>
 		this->GetFEMObject()->AddNextLoad(fem::Load::Pointer(pLoad));
 		globalNum++;
 	}
-	std::cout << "Num Loads at FEMObject : " << this->GetFEMObject()->GetNumberOfLoads() << std::endl;
+	//std::cout << "Num Loads at FEMObject : " << this->GetFEMObject()->GetNumberOfLoads() << std::endl;
  }
-
-
-
-
-
-
 
 
 } // fem

@@ -2,11 +2,11 @@
 <executable>
   <category>MeshGeneration</category>
   <title>MeshCompression</title>
-  <description><![CDATA[Deforms the input tetrahedral mesh towards the boundaries of the input labeled image. Two point sets are extracted for the mesh deformation. The first (source point set) consists of the surface vertices in the input mesh. The second (target point set) consists of the surface edge points in the input labeled image. After the extraction of the two point sets, the input mesh is deformed by registering the source to the target point set using a physics-based non-rigid registration method. The current version of the module supports a single-tissue input labeled image and mesh. A comprehensive description of the method can be found in article : Mesh deformation-based multi-tissue mesh generation for brain images, Engineering with Computers (2012), Volume 28, Issue 4, pp 305-318.]]></description>
+  <description><![CDATA[Deforms the input tetrahedral mesh towards the boundaries of the input labeled image. Two point sets are extracted for the mesh deformation. The first (source point set) consists of the surface vertices in the input mesh. The second (target point set) consists of the surface edge points in the input labeled image. After the extraction of the two point sets, the input mesh is deformed by registering the source to the target point set using a physics-based non-rigid registration method. The current version of the module supports a single-tissue input labeled image and mesh. The description of the method can be found at: Mesh deformation-based multi-tissue mesh generation for brain images, Engineering with Computers (2012), Volume 28, Issue 4, pp 305-318.]]></description>
   <version>0.0.1</version>
   <documentation-url>http://www.example.com/Slicer/Modules/MeshCompression</documentation-url>
   <license>Slicer</license>
-  <contributor>Fotis Drakopoulos (CRTC), Yixun Liu (CRTC), Andrey Fedorov (SPL B&amp;W Harvard), Nikos Chrisochoides (CRTC)</contributor>
+  <contributor>Fotis Drakopoulos (CRTC), Yixun Liu (CRTC), Andrey Fedorov (CRTC), Nikos Chrisochoides (CRTC)</contributor>
   <acknowledgements>This work was partially supported by NIH R44 OD018334-03A, grant CCF-1139864 and by the Richard T.Cheng Endowment.</acknowledgements>
     <parameters>
     <label>Mesh Compression Parameters</label>
@@ -75,13 +75,13 @@
 	<string>
 	  <name>OutputSourcePointsFileName</name>
 	  <longflag>outputSourcePoints</longflag>
-	  <description><![CDATA[Extracted source points in vtk file format (optional). The source points consist of the surface vertices and the interface vertices (vertices that belong to more than one image label) in the input mesh.]]></description>
+	  <description><![CDATA[Extracted source points in vtk file format (optional).]]></description>
 	  <label>Output Source Points File</label>
 	</string>
 	<string>
 	  <name>OutputTargetPointsFileName</name>
 	  <longflag>outputTargetPoints</longflag>
-	  <description><![CDATA[Extracted target points in vtk file format (optional). The target points consist of the surface edge points and the interface edge points in the input labeled image.]]></description>
+	  <description><![CDATA[Extracted target points in vtk file format (optional).]]></description>
 	  <label>Output Target Points File</label>
 	</string>
 	<string>

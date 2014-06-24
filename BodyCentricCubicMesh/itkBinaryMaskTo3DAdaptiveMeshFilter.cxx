@@ -147,8 +147,8 @@ BinaryMaskTo3DAdaptiveMeshFilter<TInputImage,TOutputMesh>
 	bool bStop = false;
 	while(!bStop && m_CurrentResol < this->m_MaxResolution)
 	{
-		std::cout << "\nCreating resolution " << m_CurrentResol << std::endl;
-		std::cout << "Num tets : " << m_Tetras.size() << std::endl;
+		std::cout << "\nIteration " << m_CurrentResol+1 << std::endl;
+		//std::cout << "Num tets : " << m_Tetras.size() << std::endl;
 
 		// Copy all tetrahedra to a temporary list
 		std::list<RGMTetra_ptr> prev_level_tetras;
@@ -181,14 +181,14 @@ BinaryMaskTo3DAdaptiveMeshFilter<TInputImage,TOutputMesh>
 				m_PendingTetras.push_back(curT);
 		} // while(prev_level_size)
 
-		std::cout << red_tetras_cnt << " tets were Red-subdivided, "  << std::endl;
+		//std::cout << red_tetras_cnt << " tets were Red-subdivided, "  << std::endl;
 
 		// Enforce conformancy of the tetras neighbouring to the Red-subdivided ones. Subdivisions may incur new ones, that's why
 		// there are two loops. TODO(?): bound the complexity of Red-Green subdivision procedure.
 		while(new_edges_split)
 		{
 			new_edges_split = false;
-			std::cout << m_PendingTetras.size() << " tets are pending" << std::endl;
+			//std::cout << m_PendingTetras.size() << " tets are pending" << std::endl;
 			assert(prev_level_tetras.empty());
 			std::insert_iterator<std::list<RGMTetra_ptr > > pltI(prev_level_tetras, prev_level_tetras.begin());
 			std::copy(m_PendingTetras.begin(), m_PendingTetras.end(), pltI);
@@ -302,7 +302,7 @@ BinaryMaskTo3DAdaptiveMeshFilter<TInputImage,TOutputMesh>
 			} // while(prev_level_size)
 		} // while(new_edges_split)
 
-		std::cout << m_PendingTetras.size() << " tets are pending" << std::endl;
+		//std::cout << m_PendingTetras.size() << " tets are pending" << std::endl;
 
 		// Here we know that no new split edges will be introduced, and we can
 		// finalize the subdivisions of Green tetrahedra.
@@ -329,7 +329,7 @@ BinaryMaskTo3DAdaptiveMeshFilter<TInputImage,TOutputMesh>
 
 	// Discard the tetrahedra, totally outside the boundary
 	// Note there are two places to discard tetras. One is here, the other is in the method CreateMesh.
-	std::cout<<"\nDiscarding tetras..."<<std::endl;
+	//std::cout<<"\nDiscarding tetras..."<<std::endl;
 	if(!m_KeepOutside)
 	{
 		unsigned total_tets = m_Tetras.size();
@@ -405,8 +405,8 @@ BinaryMaskTo3DAdaptiveMeshFilter<TInputImage,TOutputMesh>
 		m_NumberOfTets++;
 	}
 
-	std::cout << "Number of Tetrahedra :" << this->m_NumberOfTets<< std::endl;
-	std::cout << "Number of Nodes :" << this->m_NumberOfPoints << std::endl;
+	std::cout << "\nNumber of Tetrahedra :" << this->m_NumberOfTets<< std::endl;
+	std::cout << "Number of Vertices :" << this->m_NumberOfPoints << std::endl;
 
 	this->GetOutput()->SetBufferedRegion(this->GetOutput()->GetRequestedRegion());
 
@@ -446,7 +446,7 @@ bool
 BinaryMaskTo3DAdaptiveMeshFilter<TInputImage,TOutputMesh>
 ::FindSubdividedRegions()
  {
-	std::cout << "Find the subdivided regions..." << std::endl;
+	//std::cout << "Find the subdivided regions..." << std::endl;
 
 	int label = *m_labelSet.begin();
 	typename std::list<RGMTetra_ptr>::iterator iter;
@@ -495,10 +495,10 @@ BinaryMaskTo3DAdaptiveMeshFilter<TInputImage,TOutputMesh>
 
 	similarityBetweenSubmeshAndRegion = (float)totalNumOfVoxelInMeshRegionWithSpecifiedLabel/m_labelToCount[label];
 
-	std::cout << "\nTissue with label: " << label << std::endl;
-	std::cout << "Number of common voxels between tissue and mesh (S1∩S2) : " << totalNumOfVoxelInMeshRegionWithSpecifiedLabel<<std::endl;
-	std::cout << "Number of voxels in the mesh region (S1) : " << totalNumOfVoxelsInMeshRegion << std::endl;
-	std::cout << "Number of voxels in the tissue region (S2) : " << m_labelToCount[label]<< std::endl;
+	//std::cout << "\nTissue with label: " << label << std::endl;
+	//std::cout << "Number of common voxels between tissue and mesh (S1∩S2) : " << totalNumOfVoxelInMeshRegionWithSpecifiedLabel<<std::endl;
+	//std::cout << "Number of voxels in the mesh region (S1) : " << totalNumOfVoxelsInMeshRegion << std::endl;
+	//std::cout << "Number of voxels in the tissue region (S2) : " << m_labelToCount[label]<< std::endl;
 
 	// checks
 	if(similarityBetweenSubmeshAndMesh > 1.)
@@ -678,7 +678,7 @@ BinaryMaskTo3DAdaptiveMeshFilter<TInputImage,TOutputMesh>
 			}
 			else
 			{
-				std::cout << "Should find this face!!!" << std::endl;
+				//std::cout << "Should find this face!!!" << std::endl;
 			}
 		}
 	}
@@ -945,7 +945,7 @@ bool
 BinaryMaskTo3DAdaptiveMeshFilter<TInputImage,TOutputMesh>
 ::Initialize()
  {
-	std::cout << "Initializing..." << std::endl;
+	//std::cout << "Initializing..." << std::endl;
 
 	// Initialize non-constant class members
 	m_Interpolator = InterpolatorType::New();
@@ -1023,7 +1023,7 @@ BinaryMaskTo3DAdaptiveMeshFilter<TInputImage,TOutputMesh>
 
 	// Find out the appropriate value of the BCC spacing
 	m_BCCSpacing = FindBCCSpacing();
-	std::cout << "Initialization done" << std::endl;
+	//std::cout << "Initialization done" << std::endl;
 	return 0;
 }
 
@@ -1041,7 +1041,7 @@ BinaryMaskTo3DAdaptiveMeshFilter<TInputImage,TOutputMesh>
 		itkExceptionMacro(<< "Input Image is Null.");
 
 	this->CreateBCC();
-	std::cout << "BCC created" << std::endl;
+	//std::cout << "BCC created" << std::endl;
 
 	// If requested, need to remove the elements which are guaranteed to be outside the object
 	unsigned long total_tets = 0;
@@ -1053,7 +1053,7 @@ BinaryMaskTo3DAdaptiveMeshFilter<TInputImage,TOutputMesh>
 		// Of course, a tetrahedron is not discarded if it has both negative and
 		// positive values of distance at the vertices.
 		total_tets = m_Tetras.size();
-		std::cout << "Number of tets before removals: " << total_tets << std::endl;
+		//std::cout << "Number of tets before removals: " << total_tets << std::endl;
 		unsigned long i;
 
 		for(i=0; i<total_tets; i++)
@@ -1069,7 +1069,7 @@ BinaryMaskTo3DAdaptiveMeshFilter<TInputImage,TOutputMesh>
 		}
 	}
 	total_tets = m_Tetras.size();
-	std::cout << "Number of tets after removals : " << total_tets << std::endl;
+	//std::cout << "Number of tets after removals : " << total_tets << std::endl;
 }
 
 /** PrintSelf */
@@ -2990,11 +2990,11 @@ BinaryMaskTo3DAdaptiveMeshFilter<TInputImage,TOutputMesh>
   resampler->Update();
 
   this->m_ReadyInputImage = resampler->GetOutput();
-  std::cout << "Input image was resampled " << std::endl;
-  std::cout<<"Size: " << this->m_ReadyInputImage->GetLargestPossibleRegion().GetSize() << std::endl;
-  std::cout<<"Spacing: " << this->m_ReadyInputImage->GetSpacing() << std::endl;
-  std::cout<<"Origin: " << this->m_ReadyInputImage->GetOrigin() << std::endl;
-  std::cout<<"Direction: " << this->m_ReadyInputImage->GetDirection() << std::endl;
+  //std::cout << "Input image was resampled " << std::endl;
+  //std::cout<<"Size: " << this->m_ReadyInputImage->GetLargestPossibleRegion().GetSize() << std::endl;
+  //std::cout<<"Spacing: " << this->m_ReadyInputImage->GetSpacing() << std::endl;
+  //std::cout<<"Origin: " << this->m_ReadyInputImage->GetOrigin() << std::endl;
+  //std::cout<<"Direction: " << this->m_ReadyInputImage->GetDirection() << std::endl;
 }
 
 

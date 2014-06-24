@@ -249,7 +249,7 @@ protected:
 
   bool CheckTetrahedraVolumes(itk::VectorContainer<unsigned long ,itk::fem::Element::Pointer> *ElementContainer)
   {
-	  std::cout << "Checking tetrahedra volumes..." << std::endl;
+	  //std::cout << "Checking tetrahedra volumes..." << std::endl;
 	  const double ZERO6 = 0.000001;
 
 	  if(ElementContainer == NULL)

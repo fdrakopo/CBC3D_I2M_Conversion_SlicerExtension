@@ -35,10 +35,6 @@ int DoIt( int argc, char * argv[], T )
 	typedef itk::ImageFileReader<InputImageType>  ReaderType;
 
 	typename ReaderType::Pointer pImageReader = ReaderType::New();
-//	InputMeshFileName = "/home/fdrakopo/DEVELOPMENT/ImageToMeshConversion_Slicer_MultiTissue/I2M/MeshCompression/Data/Baseline/nidus_BCC_mesh.vtk";
-//	InputLabeledImageFileName = "/home/fdrakopo/DEVELOPMENT/ImageToMeshConversion_Slicer_MultiTissue/I2M/MeshCompression/Data/Baseline/nidus.mha";
-//	NumOfIterations = 8;
-//	NonConnectivity = 0;
 	pImageReader->SetFileName( InputLabeledImageFileName.c_str() );
 	try
 	{
@@ -55,16 +51,16 @@ int DoIt( int argc, char * argv[], T )
 	typename InputImageType::Pointer pInputImage = pImageReader->GetOutput();
 
 	// Prints
-	std::cout << "Input Mesh : " << InputMeshFileName << std::endl;
-	std::cout << "Labeled Image : " << InputLabeledImageFileName << std::endl;
-	std::cout << "Trade Off : "  << Flexibility << std::endl;
-	std::cout << "Number of Iterations : "  << NumOfIterations << std::endl;
-	std::cout << "Non-Connectivity : " << NonConnectivity << std::endl;
-	std::cout << "Output Mesh : " << OutputMeshFileName << std::endl;
-	std::cout << "Output Source Points : " << OutputSourcePointsFileName << std::endl;
-	std::cout << "Output Target Points : " << OutputTargetPointsFileName << std::endl;
-	std::cout << "Output Surface Triangles : " << OutputSurfaceTrianglesFileName << std::endl;
-	std::cout << "" << std::endl;
+	//std::cout << "Input Mesh : " << InputMeshFileName << std::endl;
+	//std::cout << "Labeled Image : " << InputLabeledImageFileName << std::endl;
+	//std::cout << "Trade Off : "  << Flexibility << std::endl;
+	//std::cout << "Number of Iterations : "  << NumOfIterations << std::endl;
+	//std::cout << "Non-Connectivity : " << NonConnectivity << std::endl;
+	//std::cout << "Output Mesh : " << OutputMeshFileName << std::endl;
+	//std::cout << "Output Source Points : " << OutputSourcePointsFileName << std::endl;
+	//std::cout << "Output Target Points : " << OutputTargetPointsFileName << std::endl;
+	//std::cout << "Output Surface Triangles : " << OutputSurfaceTrianglesFileName << std::endl;
+	//std::cout << "" << std::endl;
 
 	// Check parameters
     // (0.1 , 1]
@@ -90,7 +86,7 @@ int DoIt( int argc, char * argv[], T )
 	}
 
 	// Read the input mesh
-	std::cout << "Reading input mesh..." << std::endl;
+	std::cout << "\nReading input mesh..." << std::endl;
 	typedef float MeshPixelType;
 	typedef itk::Mesh<MeshPixelType,ImageDimension> MeshType;
 	typename itk::VTKUnstructuredGridReader<MeshType>::Pointer pMeshReader = itk::VTKUnstructuredGridReader<MeshType>::New();
@@ -109,9 +105,9 @@ int DoIt( int argc, char * argv[], T )
 	}
 
 	MeshType::Pointer pInputMesh = pMeshReader->GetOutput();
-	std::cout << "Number of Points : " << pInputMesh->GetNumberOfPoints() << std::endl;
-	std::cout << "Number of Cells : " << pInputMesh->GetNumberOfCells() << std::endl;
-	std::cout << "Number of Cell Data: " << pInputMesh->GetCellData()->Size() << std::endl;
+    std::cout << "Number of Tetrahedra : " << pInputMesh->GetNumberOfCells() << std::endl;
+    std::cout << "Number of Vertices : " << pInputMesh->GetNumberOfPoints() << std::endl;
+	//std::cout << "Number of Cell Data: " << pInputMesh->GetCellData()->Size() << std::endl;
 
 	// Call the FEMCompressor filter
 	typedef itk::fem::FEMCompressor<MeshType,InputImageType,MeshType> FEMCompressorType;

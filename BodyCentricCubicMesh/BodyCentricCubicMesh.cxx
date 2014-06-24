@@ -46,13 +46,13 @@ int DoIt( int argc, char * argv[], T )
 	}
 
 	// Prints
-	std::cout << "" << std::endl;
-	std::cout << "Input image : " << LabeledImageFileName << std::endl;
-	std::cout << "Mesh Size : " << MeshSize << std::endl;
-	std::cout << "Fidelity : " << Fidelity << std::endl;
-	std::cout << "Resample Resolution : "  << ResampleResolution << std::endl;
-	std::cout << "Output Mesh File Name : "  << OutputMeshFileName << std::endl;
-	std::cout << "" << std::endl;
+	//std::cout << "" << std::endl;
+	//std::cout << "Input image : " << LabeledImageFileName << std::endl;
+	//std::cout << "Mesh Size : " << MeshSize << std::endl;
+	//std::cout << "Fidelity : " << Fidelity << std::endl;
+	//std::cout << "Resample Resolution : "  << ResampleResolution << std::endl;
+	//std::cout << "Output Mesh File Name : "  << OutputMeshFileName << std::endl;
+	//std::cout << "" << std::endl;
 
 	// Check parameters
 	if(MeshSize < 1 || MeshSize > 20)
@@ -77,12 +77,12 @@ int DoIt( int argc, char * argv[], T )
 	typename InputImageType::Pointer pInputImage = pImageReader->GetOutput();
 	typename InputImageType::SizeType input_size = pInputImage->GetLargestPossibleRegion().GetSize();
 	typename InputImageType::SpacingType input_spacing = pInputImage->GetSpacing();
-	std::cout<<"Input Image: " << std::endl;
-	std::cout<<"Size : " << input_size << std::endl;
-	std::cout<<"Spacing : " << input_spacing << std::endl;
-	std::cout<<"Origin : " << pInputImage->GetOrigin()<< std::endl;
-	std::cout<<"Direction : " << pInputImage->GetDirection()<< std::endl;
-	std::cout << "" << std::endl;
+	//std::cout<<"Input Image: " << std::endl;
+	//std::cout<<"Size : " << input_size << std::endl;
+	//std::cout<<"Spacing : " << input_spacing << std::endl;
+	//std::cout<<"Origin : " << pInputImage->GetOrigin()<< std::endl;
+	//std::cout<<"Direction : " << pInputImage->GetDirection()<< std::endl;
+	//std::cout << "" << std::endl;
 
 	// This variable defines the spacing of the initial BCC lattice. By default, it is equal to 10,
 	// which means that the spacing will be 1/10th of the smallest dimension of the image

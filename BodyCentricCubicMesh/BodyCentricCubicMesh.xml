@@ -2,11 +2,11 @@
 <executable>
   <category>MeshGeneration</category>
   <title>BodyCentricCubicMesh</title>
-  <description><![CDATA[Generates a Body Centric Cubic (BCC) mesh from a labeled image. Initially the generated mesh is homogeneous, that means does not distinguish different tissues. Later the module specifies which tissue each tetrahedron belongs to. Each tissue is capable of automatically adjusting its resolution based on its geometric complexity and the predefined subdivision criterion. The current version of the module supports a single-tissue input labeled image. A comprehensive description of the method can be found at : 1.Tetrahedral mesh generation for medical imaging Fedorov A., Chrisochoides N., Kikinis R., Warfield S. College of William and Mary; Computational Radiology Lab and Surgical Planning Lab, Brigham and Women's Hospital, Harvard Medical School, and 2. Mesh Deformation-based Multi-tissue Mesh Generation for Brain Images, Yixun Liu, Panagiotis Foteinos, Andrey Chernikov and Nikos Chrisochoides, Engineering with Computers, Volume 28, pages 305-318, 2012.]]></description>
+  <description><![CDATA[The module generates a Body Centric Cubic (BCC) mesh from a labeled image. Initially the generated mesh is homogeneous, that means does not distinguish different tissues. Later the module specifies which tissue each tetrahedron belongs to. Each tissue is capable of automatically adjusting its resolution based on its geometric complexity and the predefined subdivision criterion. The current version of the module supports a single-tissue input labeled image. The description of the method can be found in: (1) Tetrahedral mesh generation for medical imaging,Fedorov A., Chrisochoides N., Kikinis R., Warfield S, The Insight Journal-2005 MICCAI Open-Source Workshop, 2005,  and (2) Mesh Deformation-based Multi-tissue Mesh Generation for Brain Images, Yixun Liu, Panagiotis Foteinos, Andrey Chernikov and Nikos Chrisochoides, Engineering with Computers, Volume 28, pages 305-318, 2012.]]></description>
   <version>0.0.1</version>
   <documentation-url>http://www.example.com/Slicer/Modules/BodyCentricCubicMesh</documentation-url>
   <license>Slicer</license>
-  <contributor>Fotis Drakopoulos (CRTC), Yixun Liu (CRTC), Andrey Fedorov (SPL B&amp;W Harvard), Nikos Chrisochoides (CRTC)</contributor>
+  <contributor>Fotis Drakopoulos (CRTC), Yixun Liu (CRTC), Andrey Fedorov (CRTC), Nikos Chrisochoides (CRTC)</contributor>
   <acknowledgements>This work was partially supported by NIH R44 OD018334-03A, grant CCF-1139864 and by the Richard T.Cheng Endowment.</acknowledgements>
   <parameters>
     <label>Mesh Generation Parameters</label>
