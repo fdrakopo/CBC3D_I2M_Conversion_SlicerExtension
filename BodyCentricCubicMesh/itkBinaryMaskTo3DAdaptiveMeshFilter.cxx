@@ -507,14 +507,14 @@ BinaryMaskTo3DAdaptiveMeshFilter<TInputImage,TOutputMesh>
 		itkExceptionMacro("Similarity Between Submesh And Region is " << similarityBetweenSubmeshAndRegion << ". Should be less than 1.");
 
 	if(similarityBetweenSubmeshAndMesh <= m_Fidelity)
-		std::cout << "Similarity between common region and mesh region (S1∩S2)/S1 : " << similarityBetweenSubmeshAndMesh << " < " << m_Fidelity << std::endl;
+		std::cout << "Similarity between common region and mesh region: " << similarityBetweenSubmeshAndMesh << " < " << m_Fidelity << std::endl;
 	else
-		std::cout << "Similarity between common region and mesh region (S1∩S2)/S1 : " << similarityBetweenSubmeshAndMesh << " > " << m_Fidelity << std::endl;
+		std::cout << "Similarity between common region and mesh region: " << similarityBetweenSubmeshAndMesh << " > " << m_Fidelity << std::endl;
 
 	if(similarityBetweenSubmeshAndRegion <= m_Fidelity)
-		std::cout << "Similarity between common region and tissue region (S1∩S2)/S2 : " << similarityBetweenSubmeshAndRegion << " < " << m_Fidelity << std::endl;
+		std::cout << "Similarity between common region and tissue region: " << similarityBetweenSubmeshAndRegion << " < " << m_Fidelity << std::endl;
 	else
-		std::cout << "Similarity between common region and tissue region (S1∩S2)/S2 : " << similarityBetweenSubmeshAndRegion << " > " << m_Fidelity << std::endl;
+		std::cout << "Similarity between common region and tissue region: " << similarityBetweenSubmeshAndRegion << " > " << m_Fidelity << std::endl;
 
 	if(similarityBetweenSubmeshAndMesh > m_Fidelity && similarityBetweenSubmeshAndRegion > m_Fidelity)
 	{
