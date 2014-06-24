@@ -1,7 +1,7 @@
 BCC_I2M_Tool - Body-Centered Cubic (BCC) lattice-based Image-to-Mesh Conversion Tool
 
 Contributors: Fotis Drakopoulos, Yixun Liu, Andrey Fedorov, Nikos Chrisochoides
-Center for Real-Time Computing (crtc.wm.edu) &
+Center for Real-Time Computing (https://crtc.cs.odu.edu) &
 Surgical Planning Lab, Brigham and Women's Hospital (http://www.spl.harvard.edu/)
 Old Dominion Univeristy and The College of William and Mary, Virginia, US.
 Contact:  npchris@gmail.com
@@ -40,11 +40,10 @@ supports a single-tissue input labeled image.
 
 
 Supported Platforms 
-Linux, Windows
+Linux
 
 Building BCC_I2M_Tool
 This tool was built as a CLI (Command Line Interface) 3D Slicer module. 
-The 3D Slicer tool needs to be downloaded, compiled and installed from source, following the instructions here: http://www.slicer.org/slicerWiki/index.php/Documentation/Nightly/Developers/Build_Instructions.
 A stand alone ITK version of the code is also available. For more information please contact Nikos Chrisochoides (npchris@gmail.com).
 
 
@@ -127,7 +126,7 @@ Where:
    2012.
 
    Author(s): Fotis Drakopoulos (CRTC), Yixun Liu (CRTC), Andrey Fedorov
-   (SPL B&W Harvard), Nikos Chrisochoides (CRTC)
+   (CRTC), Nikos Chrisochoides (CRTC)
 
    Acknowledgements: This work was partially supported by NIH R44
    OD018334-03A, grant CCF-1139864 and by the Richard T.Cheng Endowment.

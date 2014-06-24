@@ -1,7 +1,7 @@
-BCC_I2M_Tool - Mesh Compression (MC) Image-to-Mesh Conversion Tool
+MC_I2M_Tool - Mesh Compression (MC) Image-to-Mesh Conversion Tool
 
 Contributors: Fotis Drakopoulos, Yixun Liu, Andrey Fedorov, Nikos Chrisochoides
-Center for Real-Time Computing (crtc.wm.edu) &
+Center for Real-Time Computing (https://crtc.cs.odu.edu) &
 Surgical Planning Lab, Brigham and Women's Hospital (http://www.spl.harvard.edu/)
 Old Dominion Univeristy and The College of William and Mary, Virginia, US.
 Contact:  npchris@gmail.com
@@ -12,14 +12,14 @@ Acknowledgements: This work was partially supported by NIH R44 OD018334-03A,
 NSF grant No. CCF-1139864 and by the Richard T.Cheng Endowment.
  
 
-The BCC_I2M_Tool is based on:
+The MC_I2M_Tool is based on:
 1. PhD thesis of Neil Molino (Stanford University, 2004
 2. PhD Thesis of Andrey Fedorov (The College of William and Mary, 2009)
 3. PhD Thesis of Yixun Liu (The College of William and Mary, 2011) 
 4. PhD Thesis of Fotis Drakopoulos (Old Dominion University, in progress)
 The PhD thesis 2 to 4 are supervised by Nikos Chrisochoides
 
-The method for the BCC_I2M_Tool is described in:
+The method for the MC_I2M_Tool is described in:
 
 1. Tetrahedral mesh generation for medical imaging Fedorov A., 
 Chrisochoides N., Kikinis R., Warfield S.
@@ -38,11 +38,10 @@ the input mesh is deformed by registering the source to the target point set usi
 physics-based non-rigid registration method. The current version of the module supports a single-tissue input labeled image and mesh.
 
 Supported Platforms 
-Linux, Windows
+Linux
 
 Building BCC_I2M_Tool
 This tool was built as a CLI (Command Line Interface) 3D Slicer module. 
-The 3D Slicer tool needs to be downloaded, compiled and installed from source following the instructions here: http://www.slicer.org/slicerWiki/index.php/Documentation/Nightly/Developers/Build_Instructions.
 A stand alone ITK version of the code is also available. For more information please contact Nikos Chrisochoides (npchris@gmail.com).
 
 
@@ -151,7 +150,7 @@ Where:
    Computers (2012), Volume 28, Issue 4, pp 305-318.
 
    Author(s): Fotis Drakopoulos (CRTC), Yixun Liu (CRTC), Andrey Fedorov
-   (SPL B&W Harvard), Nikos Chrisochoides (CRTC)
+   (CRTC), Nikos Chrisochoides (CRTC)
 
    Acknowledgements: This work was partially supported by NIH R44
    OD018334-03A, grant CCF-1139864 and by the Richard T.Cheng Endowment.
