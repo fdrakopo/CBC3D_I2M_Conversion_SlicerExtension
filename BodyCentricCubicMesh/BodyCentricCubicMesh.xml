@@ -61,9 +61,8 @@
   	<string>
       <name>OutputMeshFileName</name>
       <longflag>outputMesh</longflag>
-      <description><![CDATA[The output tetrahedral mesh in vtk file format.]]></description>
+      <description><![CDATA[The output tetrahedral mesh in vtk file format (optional).]]></description>
       <label>Output Mesh File</label>
-      <default>outputMesh.vtk</default>
     </string>
   </parameters>
 </executable>

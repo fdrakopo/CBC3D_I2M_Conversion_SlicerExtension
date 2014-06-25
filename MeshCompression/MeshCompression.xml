@@ -70,7 +70,6 @@
       <longflag>outputMesh</longflag>
       <description><![CDATA[Output deformed mesh in vtk file format (optional).]]></description>
       <label>Output Mesh File</label>
-      <default>deformedMesh.vtk</default>
     </string>
 	<string>
 	  <name>OutputSourcePointsFileName</name>
