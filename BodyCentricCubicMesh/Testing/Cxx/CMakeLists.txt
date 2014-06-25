@@ -26,7 +26,7 @@ set_property(TEST ${testname} PROPERTY LABELS ${CLP})
 set(testname ${CLP}Test2)
 add_test(NAME ${testname} COMMAND ${SEM_LAUNCH_COMMAND} $<TARGET_FILE:${CLP}Test>
   ModuleEntryPoint
-  --inputLabeledImage ${BASELINE}/nidus.mha
+  --inputLabeledImage ${BASELINE}/nidus.nii.gz
   --size 9  
   --fidelity 0.9
   --resampleResolution 0
