@@ -16,36 +16,36 @@ set_target_properties(${CLP}Test PROPERTIES LABELS ${CLP})
 set(testname ${CLP}Test1)
 add_test(NAME ${testname} COMMAND ${SEM_LAUNCH_COMMAND} $<TARGET_FILE:${CLP}Test>
   ModuleEntryPoint
-  --inputMesh ${BASELINE}/brain/brain_BCC_mesh.vtk
-  --inputLabeledImage ${BASELINE}/brain/brain.nii.gz
+  --inputMesh ${BASELINE}/brainMesh.vtk
+  --inputLabeledImage ${BASELINE}/brain.nii.gz
   --numIterations 8
   --flexibility 1
   --nonConnectivity 3
-  --outputMesh ${BASELINE}/brain/brain_BCC_mesh_deformed.vtk
+  #--outputMesh ${BASELINE}/brainMeshDeformed.vtk
    )
 set_property(TEST ${testname} PROPERTY LABELS ${CLP})
 
 set(testname ${CLP}Test2)
 add_test(NAME ${testname} COMMAND ${SEM_LAUNCH_COMMAND} $<TARGET_FILE:${CLP}Test>
   ModuleEntryPoint
-  --inputMesh ${BASELINE}/nidus/nidus_BCC_mesh.vtk
-  --inputLabeledImage ${BASELINE}/nidus/nidus.mha
+  --inputMesh ${BASELINE}/nidusMesh.vtk
+  --inputLabeledImage ${BASELINE}/nidus.nii.gz
   --numIterations 6
   --flexibility 1
   --nonConnectivity 2
-  --outputMesh ${BASELINE}/nidus/nidus_BCC_mesh_deformed.vtk
+  #--outputMesh ${BASELINE}/nidus/nidusMeshDeformed.vtk
    )
 set_property(TEST ${testname} PROPERTY LABELS ${CLP})
 
 set(testname ${CLP}Test3)
 add_test(NAME ${testname} COMMAND ${SEM_LAUNCH_COMMAND} $<TARGET_FILE:${CLP}Test>
   ModuleEntryPoint
-  --inputMesh ${BASELINE}/ventricles/ventricles_BCC_mesh.vtk
-  --inputLabeledImage ${BASELINE}/ventricles/ventricles.nii.gz
+  --inputMesh ${BASELINE}/ventriclesMesh.vtk
+  --inputLabeledImage ${BASELINE}/ventricles.nii.gz
   --numIterations 7
   --flexibility 1
   --nonConnectivity 3
-  --outputMesh ${BASELINE}/ventricles/ventricles_BCC_mesh_deformed.vtk
+  #--outputMesh ${BASELINE}/ventriclesMeshDeformed.vtk
    )
 set_property(TEST ${testname} PROPERTY LABELS ${CLP})
 

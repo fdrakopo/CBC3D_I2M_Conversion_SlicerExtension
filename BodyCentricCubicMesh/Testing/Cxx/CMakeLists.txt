@@ -15,33 +15,33 @@ set_target_properties(${CLP}Test PROPERTIES LABELS ${CLP})
 set(testname ${CLP}Test1)
 add_test(NAME ${testname} COMMAND ${SEM_LAUNCH_COMMAND} $<TARGET_FILE:${CLP}Test>
   ModuleEntryPoint
-  --inputLabeledImage ${BASELINE}/brain/brain.nii.gz
+  --inputLabeledImage ${BASELINE}/brain.nii.gz
   --size 8  
   --fidelity 0.9
   --resampleResolution 0
-  --outputMesh ${BASELINE}/brain/brain_BCC_mesh.vtk
+  #--outputMesh ${BASELINE}/brainMesh.vtk
    )
 set_property(TEST ${testname} PROPERTY LABELS ${CLP})
 
 set(testname ${CLP}Test2)
 add_test(NAME ${testname} COMMAND ${SEM_LAUNCH_COMMAND} $<TARGET_FILE:${CLP}Test>
   ModuleEntryPoint
-  --inputLabeledImage ${BASELINE}/nidus/nidus.mha
+  --inputLabeledImage ${BASELINE}/nidus.mha
   --size 9  
   --fidelity 0.9
   --resampleResolution 0
-  --outputMesh ${BASELINE}/nidus/nidus_BCC_mesh.vtk
+  #--outputMesh ${BASELINE}/nidusMesh.vtk
    )
 set_property(TEST ${testname} PROPERTY LABELS ${CLP})
 
 set(testname ${CLP}Test3)
 add_test(NAME ${testname} COMMAND ${SEM_LAUNCH_COMMAND} $<TARGET_FILE:${CLP}Test>
   ModuleEntryPoint
-  --inputLabeledImage ${BASELINE}/ventricles/ventricles.nii.gz
+  --inputLabeledImage ${BASELINE}/ventricles.nii.gz
   --size 7  
   --fidelity 0.9
   --resampleResolution 0
-  --outputMesh ${BASELINE}/ventricles/ventricles_BCC_mesh.vtk
+  #--outputMesh ${BASELINE}/ventriclesMesh.vtk
    )
 set_property(TEST ${testname} PROPERTY LABELS ${CLP})
 
