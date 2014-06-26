@@ -5,7 +5,7 @@
 #include "BodyCentricCubicMeshCLP.h"
 #include "itkBinaryMaskTo3DAdaptiveMeshFilter.h"
 #include "itkTetrahedralMeshWriter.h"
-
+#include <algorithm>
 
 // Use an anonymous namespace to keep class types and function names
 // from colliding when module is used as shared object module.  Every
@@ -86,7 +86,7 @@ int DoIt( int argc, char * argv[], T )
 
 	// This variable defines the spacing of the initial BCC lattice. By default, it is equal to 10,
 	// which means that the spacing will be 1/10th of the smallest dimension of the image
-	int BCCSpacing = fmin(fmin(input_size[0]*input_spacing[0],input_size[1]*input_spacing[1]), input_size[2]*input_spacing[2]) / MeshSize;
+	int BCCSpacing = std::min(std::min(input_size[0]*input_spacing[0],input_size[1]*input_spacing[1]), input_size[2]*input_spacing[2]) / MeshSize;
 
 	// The mesh filter
 	typedef float MeshPixelType;
