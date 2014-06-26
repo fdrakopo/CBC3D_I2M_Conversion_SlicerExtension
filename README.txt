@@ -11,7 +11,7 @@ Contact:  npchris@gmail.com
 Acknowledgements: This work was partially supported by NIH R44 OD018334-03A,
 NSF grant No. CCF-1139864 and by the Richard T.Cheng Endowment.
 
-Wiki Documentation: http://www.slicer.org/slicerWiki/index.php/Documentation/Nightly/Extensions/ImageToMeshConversion
+Wiki Documentation: http://www.slicer.org/slicerWiki/index.php/Documentation/Nightly/Extensions/CBC3DI2MConversion
 
 References: 
 1. Tetrahedral mesh generation for medical imaging Fedorov A., 
