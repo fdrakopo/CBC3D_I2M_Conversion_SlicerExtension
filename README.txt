@@ -1,4 +1,4 @@
-Extension: CBC 3D (CRTC's BCC & Compression) I2M (Image-To-Mesh) Conversion for Image Guided Therapy.
+Extension: CBC_3D_I2MConversion (CRTC's BCC & Compression Image-To-Mesh Conversion) for Image Guided Therapy.
 
 Description: This Slicer extension encapsulates two CLI modules: (1) Body Centric Cubic (BCC) Mesh Generation. This module generates a Body Centric Cubic (BCC) mesh from a labeled image. Initially the generated mesh is homogeneous, that means does not distinguish different tissues. Later the component specifies which tissue each tetrahedron belongs to. Each tissue is capable of automatically adjusting its resolution based on its geometric complexity and the predefined subdivision criterion. (2) Mesh Compression (MC). This module deforms an input tetrahedral mesh towards the boundaries of the input labeled image. Two point sets are extracted for the mesh deformation. The first (source point set) consists of the surface vertices of the input mesh. The second (target point set) consists of the surface edge points in the input labeled image. Then the input mesh is deformed by registering the source to the target point set using a Physics-Based Non-Rigid Registration method.
 
@@ -11,7 +11,7 @@ Contact:  npchris@gmail.com
 Acknowledgements: This work was partially supported by NIH R44 OD018334-03A,
 NSF grant No. CCF-1139864 and by the Richard T.Cheng Endowment.
 
-Wiki Documentation: http://www.slicer.org/slicerWiki/index.php/Documentation/Nightly/Extensions/CBC3DI2MConversion
+Wiki Documentation: http://www.slicer.org/slicerWiki/index.php/Documentation/Nightly/Extensions/CBC_3D_I2MConversion
 
 References: 
 1. Tetrahedral mesh generation for medical imaging Fedorov A., 
