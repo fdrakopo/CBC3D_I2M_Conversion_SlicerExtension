@@ -1771,8 +1771,8 @@ double
 BinaryMaskTo3DAdaptiveMeshFilter<TInputImage,TOutputMesh>
 ::FindBCCSpacing(){
   double spacing;
-  spacing = fmin(m_dimX, m_dimY);
-  spacing = fmin(spacing, m_dimZ);
+  spacing = std::min(m_dimX, m_dimY);
+  spacing = std::min(spacing, m_dimZ);
   return spacing/m_BCCSpacing;
 }
 
