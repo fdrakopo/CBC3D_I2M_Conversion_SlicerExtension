@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.9)
 
-project(CBC_3D_I2MConversion)
+project(CBC3D_I2M_Conversion)
 
 #-----------------------------------------------------------------------------
 # Extension meta-information
