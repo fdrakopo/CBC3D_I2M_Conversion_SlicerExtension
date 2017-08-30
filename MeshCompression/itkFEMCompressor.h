@@ -410,7 +410,7 @@ protected:
 				nodeId = *pointIdIter;
 				point = pMesh->GetPoint(nodeId);
 
-				for(int i=0; i<MeshDimension; i++)
+				for(unsigned int i=0; i<MeshDimension; i++)
 					pos[i] = point[i];
 
 				if(count==0)
