@@ -2,7 +2,7 @@ Extension: CBC3D_I2M_Conversion (CRTC's BCC & Compression Image-To-Mesh Conversi
 
 Description: This Slicer extension encapsulates two CLI modules: (1) Body Centric Cubic (BCC) Mesh Generation. This module generates a Body Centric Cubic (BCC) mesh from a labeled image. Initially the generated mesh is homogeneous, that means does not distinguish different tissues. Later the component specifies which tissue each tetrahedron belongs to. Each tissue is capable of automatically adjusting its resolution based on its geometric complexity and the predefined subdivision criterion. (2) Mesh Compression (MC). This module deforms an input tetrahedral mesh towards the boundaries of the input labeled image. Two point sets are extracted for the mesh deformation. The first (source point set) consists of the surface vertices of the input mesh. The second (target point set) consists of the surface edge points in the input labeled image. Then the input mesh is deformed by registering the source to the target point set using a Physics-Based Non-Rigid Registration method.
 
-Contributors: Fotis Drakopoulos (CRTC), Yixun Liu (CRTC), Andrey Fedorov (CRTC), Nikos Chrisochoides (CRTC)
+Contributors: Fotis Drakopoulos (CRTC), Yixun Liu (CRTC), Andrey Fedorov (CRTC), Nikos Chrisochoides (CRTC), Joi Best (CRTC)
 Center for Real-Time Computing (https://crtc.cs.odu.edu) &
 Surgical Planning Lab, Brigham and Women's Hospital (http://www.spl.harvard.edu/)
 Old Dominion Univeristy and The College of William and Mary, Virginia, US.
