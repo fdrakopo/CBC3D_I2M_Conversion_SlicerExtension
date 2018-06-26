@@ -112,7 +112,7 @@ void FEMCompressor<TInputMesh, TInputImage, TOutputMesh>
 	for(iter = pNodeContainer->Begin(); iter != pNodeContainer->End();  iter++)
 	{
 		pos.SetVnlVector(iter.Value()->GetCoordinates());
-		for(int i=0; i<MeshDimension; i++)
+		for(unsigned int i=0; i<MeshDimension; i++)
 			pt[i] = pos[i];
 
 		pOutputMesh->SetPoint(iter.Index(),pt);
@@ -394,7 +394,7 @@ FEMCompressor< TInputMesh, TInputImage, TOutputMesh >
 
 			// count 0s offsets in each dimension
 			unsigned numberOfZeros = 0;
-			for ( unsigned j = 0; j < MeshDimension; j++ )
+			for ( unsigned int j = 0; j < MeshDimension; j++ )
 			{
 				if ( off[j] == 0 )
 					numberOfZeros++;
@@ -1027,7 +1027,7 @@ void FEMCompressor<TInputMesh, TInputImage, TOutputMesh>
 	// Initialize nodes
 	while(it != meshPoints->End())
 	{
-		for(unsigned i = 0; i < MeshDimension; i++)
+		for(unsigned int i = 0; i < MeshDimension; i++)
 			point[i]= it.Value()[i];
 
 		NodeType::Pointer node = NodeType::New();
