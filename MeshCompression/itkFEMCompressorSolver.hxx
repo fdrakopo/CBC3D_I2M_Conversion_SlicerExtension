@@ -880,8 +880,8 @@ void CompressorSolver<TPixel,VDimension>
 ::AssembleGlobalMatrixFromLandmarksAndMeshMatrices()
  {
 	//std::cout << "Assembling Global Matrix From Landmarks And Mesh Matrices..." << std::endl;
-	this->m_ls->CopyMatrix( this->m_MeshStiffnessMatrixIndex, this->m_StiffnessMatrixIndex );
-	this->m_ls->AddMatrixMatrix( this->m_StiffnessMatrixIndex, this->m_LandmarkStiffnessMatrixIndex);
+	this->GetLinearSystemWrapper()->CopyMatrix( this->m_MeshStiffnessMatrixIndex, this->m_StiffnessMatrixIndex );
+	this->GetLinearSystemWrapper()->AddMatrixMatrix( this->m_StiffnessMatrixIndex, this->m_LandmarkStiffnessMatrixIndex);
 }
 
 template <class TPixel,unsigned int VDimension>
@@ -958,7 +958,7 @@ void CompressorSolver<TPixel,VDimension>
 					const int dofm = element->GetDegreeOfFreedom(k * numberOfDOFs + m);
 					const float value = static_cast<float>( barCoor * tradeOff * pointTensorPonderation * (tens(n,m)) * confidence );
 
-					this->m_ls->AddMatrixValue(dofn, dofm, value, m_LandmarkStiffnessMatrixIndex);
+					this->GetLinearSystemWrapper()->AddMatrixValue(dofn, dofm, value, m_LandmarkStiffnessMatrixIndex);
 				}
 			}
 		}
@@ -978,8 +978,8 @@ void CompressorSolver<TPixel,VDimension>
 						const int dofm = element->GetDegreeOfFreedom(j * numberOfDOFs + m);
 						const float value = static_cast<float>( barCoor * tradeOff * pointTensorPonderation * (tens(n, m)) * confidence );
 
-						this->m_ls->AddMatrixValue(dofn, dofm, value, m_LandmarkStiffnessMatrixIndex);
-						this->m_ls->AddMatrixValue(dofm, dofn, value, m_LandmarkStiffnessMatrixIndex);
+						this->GetLinearSystemWrapper()->AddMatrixValue(dofn, dofm, value, m_LandmarkStiffnessMatrixIndex);
+						this->GetLinearSystemWrapper()->AddMatrixValue(dofm, dofn, value, m_LandmarkStiffnessMatrixIndex);
 
 					}
 				}
@@ -1037,7 +1037,7 @@ void CompressorSolver<TPixel,VDimension>
 				{
 					unsigned nx = element->GetDegreeOfFreedom(nodeId * numberOfDOFs + dofXId);
 					unsigned ny = element->GetDegreeOfFreedom(nodeId * numberOfDOFs + dofYId);
-					nodeTensor[dofXId][dofYId] = this->m_ls->GetMatrixValue(nx, ny, m_MeshStiffnessMatrixIndex);
+					nodeTensor[dofXId][dofYId] = this->GetLinearSystemWrapper()->GetMatrixValue(nx, ny, m_MeshStiffnessMatrixIndex);
 				}
 			}
 			landmarkTensor += nodeTensor * shape[nodeId];
@@ -1204,11 +1204,11 @@ void CompressorSolver<TPixel,VDimension>
 	std::cout <<  "Printing Forces at : " << fName << std::endl;
 
 	Float val = 0;
-	int NumDofs = this->m_ls->GetSystemOrder();
+	int NumDofs = this->GetLinearSystemWrapper()->GetSystemOrder();
 	std::cout <<  "Num DOF's : " << NumDofs << std::endl;
 	for( int i = 0; i < NumDofs; i++ )
 	{
-		val = this->m_ls->GetVectorValue(i,m_ForceIndex);
+		val = this->GetLinearSystemWrapper()->GetVectorValue(i,m_ForceIndex);
 		fprintf(pFile,"%6.8f\n",val);
 	}
 	fclose(pFile);
@@ -1229,12 +1229,12 @@ void CompressorSolver<TPixel,VDimension>
 	std::cout <<  "Printing Solution Displacements at : " << fName << std::endl;
 
 	Float val = 0;
-	int NumDofs = this->m_ls->GetSystemOrder();
+	int NumDofs = this->GetLinearSystemWrapper()->GetSystemOrder();
 	std::cout <<  "Num DOF's : " << NumDofs << std::endl;
 	for( int i = 0; i < NumDofs; i++ )
 	{
 		// Get the solution displacements
-		val = this->m_ls->GetSolutionValue(i,m_SolutionIndex);
+		val = this->GetLinearSystemWrapper()->GetSolutionValue(i,m_SolutionIndex);
 		fprintf(pFile,"%10.10f\n",val);
 	}
 	fclose(pFile);
